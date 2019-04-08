@@ -5,17 +5,64 @@ namespace App\Model;
 
 use JsonSerializable;
 
+/**
+ * @OA\Schema(schema="recipe")
+ */
 class Recipe implements JsonSerializable {
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $id;
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $title;
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $description;
+    /**
+     * @OA\Property(type="string")
+     * @var array
+     */
     private $ingredients;
+    /**
+     * @OA\Property(type="string")
+     * @var array
+     */
     private $directions;
+    /**
+     * @OA\Property()
+     * @var integer
+     */
     private $prepTimeMin;
+    /**
+     * @OA\Property()
+     * @var integer
+     */
     private $cookTimeMin;
+    /**
+     * @OA\Property()
+     * @var integer
+     */
     private $servings;
+    /**
+     * @OA\Property(type="string")
+     * @var array
+     */
     private $tags;
+    /**
+     * @OA\Property()
+     * @var author
+     */
     private $author;
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $source_url;
 
     /**

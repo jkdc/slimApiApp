@@ -27,7 +27,10 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe/{id}",
              *   summary="Get recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true, type="string"
+             *       name="id", in="path", description="Recipe Id", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe found"
@@ -56,37 +59,74 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe/{id}",
              *   summary="Update recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true, type="string"
+             *       name="id", in="path", description="Recipe Id", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="title", in="formData", description="Recipe title", required=true, type="string"
+             *       name="title", in="header", description="Recipe title", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="description", in="formData", description="Recipe description", required=true, type="string"
+             *       name="description", in="header", description="Recipe description", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="ingredients", in="formData", description="Recipe ingredients", required=true,  type="array"
+             *       name="ingredients", in="header", description="Recipe ingredients", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="directions", in="formData", description="Recipe directions", required=true, type="array"
+             *       name="directions", in="header", description="Recipe directions", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false, type="integer"
+             *       name="prepTimeMin", in="header", description="Recipe prep time min", required=false,
+             *       @OA\Schema(
+             *           type="integer",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false, type="integer"
+             *       name="cookTimeMin", in="header", description="Recipe cook time min", required=false,
+             *       @OA\Schema(
+             *           type="integer",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="servings", in="formData", description="Recipe servings", required=true, type="integer"
+             *       name="servings", in="header", description="Recipe servings", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="tags", in="formData", description="Recipe tags", required=true, type="array"
+             *       name="tags", in="header", description="Recipe tags", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="author", in="formData", description="Recipe author", required=true, type="object"
+             *       name="author", in="header", description="Recipe author", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(ref="#/components/schemas/author")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="source_url", in="formData", description="Recipe source url", required=true, type="string"
+             *       name="source_url", in="header", description="Recipe source url", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe Update"
@@ -116,37 +156,74 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe",
              *   summary="Create recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true, type="string"
+             *       name="id", in="path", description="Recipe Id", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="title", in="formData", description="Recipe title", required=true, type="string"
+             *       name="title", in="header", description="Recipe title", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="description", in="formData", description="Recipe description", required=true, type="string"
+             *       name="description", in="header", description="Recipe description", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="ingredients", in="formData", description="Recipe ingredients", required=true,  type="array"
+             *       name="ingredients", in="header", description="Recipe ingredients", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="directions", in="formData", description="Recipe directions", required=true, type="array"
+             *       name="directions", in="header", description="Recipe directions", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false, type="integer"
+             *       name="prepTimeMin", in="header", description="Recipe prep time min", required=false,
+             *       @OA\Schema(
+             *           type="integer",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false, type="integer"
+             *       name="cookTimeMin", in="header", description="Recipe cook time min", required=false,
+             *       @OA\Schema(
+             *           type="integer",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="servings", in="formData", description="Recipe servings", required=true, type="integer"
+             *       name="servings", in="header", description="Recipe servings", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="tags", in="formData", description="Recipe tags", required=true, type="array"
+             *       name="tags", in="header", description="Recipe tags", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(type="string")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="author", in="formData", description="Recipe author", required=true, type="object"
+             *       name="author", in="header", description="Recipe author", required=true,
+             *       @OA\Schema(
+             *           type="array",
+             *           @OA\Items(ref="#/components/schemas/author")
+             *        ),
              *   ),
              *   @OA\Parameter(
-             *       name="source_url", in="formData", description="Recipe source url", required=true, type="string"
+             *       name="source_url", in="header", description="Recipe source url", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe created"
@@ -172,7 +249,10 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe/{id}",
              *   summary="Delete recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true, type="string"
+             *       name="id", in="path", description="Recipe Id", required=true,
+             *       @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe Delete"

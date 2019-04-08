@@ -5,8 +5,19 @@ namespace App\Model;
 
 use JsonSerializable;
 
+/**
+ * @OA\Schema(schema="author")
+ */
 class Author implements JsonSerializable{
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $name;
+    /**
+     * @OA\Property()
+     * @var string
+     */
     private $url;
 
     /**
