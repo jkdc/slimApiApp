@@ -27,7 +27,7 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe/{id}",
              *   summary="Get recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true,
+             *       name="id", in="path", description="Recipe Id", required=true, type="string"
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe found"
@@ -51,43 +51,42 @@ $app->group('/api', function () use ($app) {
 
                 return $response->withJSON($dataResult, 200);
             });
-
             /**
              * @OA\Put(
              *   path="/api/v1/recipe/{id}",
              *   summary="Update recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true,
+             *       name="id", in="path", description="Recipe Id", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="title", in="formData", description="Recipe title", required=true,
+             *       name="title", in="formData", description="Recipe title", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="description", in="formData", description="Recipe description", required=true,
+             *       name="description", in="formData", description="Recipe description", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="ingredients", in="formData", description="Recipe ingredients, required=true,
+             *       name="ingredients", in="formData", description="Recipe ingredients", required=true,  type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="directions", in="formData", description="Recipe directions", required=true,
+             *       name="directions", in="formData", description="Recipe directions", required=true, type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false,
+             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false,
+             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="servings", in="formData", description="Recipe servings", required=true,
+             *       name="servings", in="formData", description="Recipe servings", required=true, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="tags", in="formData", description="Recipe tags", required=true,
+             *       name="tags", in="formData", description="Recipe tags", required=true, type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="author", in="formData", description="Recipe author", required=true,
+             *       name="author", in="formData", description="Recipe author", required=true, type="object"
              *   ),
              *   @OA\Parameter(
-             *       name="source_url", in="formData", description="Recipe source url", required=true,
+             *       name="source_url", in="formData", description="Recipe source url", required=true, type="string"
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe Update"
@@ -100,6 +99,7 @@ $app->group('/api', function () use ($app) {
              *   )
              * )
              */
+
             $app->put('/{id}', function (Request $request, Response $response, array $args) {
                 $recipeService = new RecipeService($this->get('settings')['database']);
                 $dataResult = $recipeService->updateRecipe($this->get('settings')['tableSchemas']['recipe'], $args['id'], $request->getParams());
@@ -116,38 +116,44 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe",
              *   summary="Create recipe",
              *   @OA\Parameter(
-             *       name="id", in="formData", description="Recipe Id", required=false,
+             *       name="id", in="path", description="Recipe Id", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="title", in="formData", description="Recipe title", required=true,
+             *       name="title", in="formData", description="Recipe title", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="description", in="formData", description="Recipe description", required=true,
+             *       name="description", in="formData", description="Recipe description", required=true, type="string"
              *   ),
              *   @OA\Parameter(
-             *       name="ingredients", in="formData", description="Recipe ingredients, required=true,
+             *       name="ingredients", in="formData", description="Recipe ingredients", required=true,  type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="directions", in="formData", description="Recipe directions", required=true,
+             *       name="directions", in="formData", description="Recipe directions", required=true, type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false,
+             *       name="prepTimeMin", in="formData", description="Recipe prep time min", required=false, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false,
+             *       name="cookTimeMin", in="formData", description="Recipe cook time min", required=false, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="servings", in="formData", description="Recipe servings", required=true,
+             *       name="servings", in="formData", description="Recipe servings", required=true, type="integer"
              *   ),
              *   @OA\Parameter(
-             *       name="tags", in="formData", description="Recipe tags", required=true,
+             *       name="tags", in="formData", description="Recipe tags", required=true, type="array"
              *   ),
              *   @OA\Parameter(
-             *       name="author", in="formData", description="Recipe author", required=true,
+             *       name="author", in="formData", description="Recipe author", required=true, type="object"
              *   ),
              *   @OA\Parameter(
-             *       name="source_url", in="formData", description="Recipe source url", required=true,
+             *       name="source_url", in="formData", description="Recipe source url", required=true, type="string"
              *   ),
+             *   @OA\Response(
+             *     response=200, description="Recipe created"
+             *   ),
+             *   @OA\Response(
+             *     response="default", description="an ""unexpected"" error"
+             *   )
              * )
              */
             $app->post('', function (Request $request, Response $response, array $args) {
@@ -166,7 +172,7 @@ $app->group('/api', function () use ($app) {
              *   path="/api/v1/recipe/{id}",
              *   summary="Delete recipe",
              *   @OA\Parameter(
-             *       name="id", in="path", description="Recipe Id", required=true,
+             *       name="id", in="path", description="Recipe Id", required=true, type="string"
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipe Delete"
@@ -224,6 +230,7 @@ $app->group('/api', function () use ($app) {
         });
     });
 });
+
 /**
  * @OA\Get(
  *   path="/swagger/doc",
