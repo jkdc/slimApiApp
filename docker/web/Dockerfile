@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y apt-utils vim curl git unzip
 RUN apt-get install -y nginx-extras

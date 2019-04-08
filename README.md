@@ -72,13 +72,15 @@ make it persistent:
             query = "Banana Cake"
         
         
-        query accept all words wich you want to search separated by blank space
+        query accept all words wich you want to search separated by blank space in all params of the document.
+        
         
     * POST   http://slimapp.loc/recipe/search/match
     
         Post Params => 
-            Title = "Banana"
-        search in Title param 'Banana'
+            Title = Banana
+        
+        search in Title param the work Banana
         
     * POST   http://slimapp.loc/recipe/search/match_all
         
