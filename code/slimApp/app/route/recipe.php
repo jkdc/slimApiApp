@@ -9,6 +9,7 @@ use Slim\Http\Response;
 
 /**
  * @OA\Info(title="Slim API", version="0.1")
+ *
  */
 
 
@@ -285,6 +286,18 @@ $app->group('/api', function () use ($app) {
              *       in="path",
              *       description="Kind filter of search",
              *       required=true,
+             *        @OA\Schema(
+             *           type="string",
+             *        ),
+             *   ),
+             *   @OA\Parameter(
+             *       name="query",
+             *       in="query",
+             *       description="Data to search",
+             *       required=true,
+             *        @OA\Schema(
+             *           type="string",
+             *        ),
              *   ),
              *   @OA\Response(
              *     response=200, description="Recipes found",
