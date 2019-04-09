@@ -7,11 +7,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-/**
- * @OA\Info(title="Slim API", version="0.1")
- *
- */
-
 
 $app->group('/api', function () use ($app) {
 

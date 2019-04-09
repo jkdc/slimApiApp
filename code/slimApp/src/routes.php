@@ -5,8 +5,25 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
+/**
+ * @OA\OpenApi(
+ *     @OA\Info(
+ *         version="1.0.0",
+ *         title="Slim API",
+ *         description="CRUD for manage recipes",
+ *         @OA\Contact(
+ *             email="joaquincardosobuzon@gmail.com"
+ *         ),
+ *     ),
+ *     @OA\Server(
+ *         url="http://slimapp.loc"
+ *     ),
+ * )
+ */
+
 // Routes
 require __DIR__ . '/../app/route/recipe.php';
+
 
 /**
  * @OA\Get(
