@@ -283,7 +283,6 @@ $app->group('/api', function () use ($app) {
              *   @OA\Parameter(
              *       name="filter",
              *       in="path",
-             *       default= {query_string , match, match_all}
              *       description="Kind filter of search",
              *       required=true,
              *   ),
