@@ -289,7 +289,7 @@ $app->group('/api', function () use ($app) {
              *       name="query",
              *       in="query",
              *       description="Data to search",
-             *       required=true,
+             *       required=false,
              *        @OA\Schema(
              *           type="string",
              *        ),
