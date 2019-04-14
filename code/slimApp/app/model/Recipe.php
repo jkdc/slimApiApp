@@ -25,12 +25,12 @@ class Recipe implements JsonSerializable {
      */
     private $description;
     /**
-     * @OA\Property(type="string")
+     * @OA\Property(type="array", type="array", @OA\Items(type="string"))
      * @var array
      */
     private $ingredients;
     /**
-     * @OA\Property(type="string")
+     * @OA\Property(type="array", type="array", @OA\Items(type="string"))
      * @var array
      */
     private $directions;
@@ -50,7 +50,7 @@ class Recipe implements JsonSerializable {
      */
     private $servings;
     /**
-     * @OA\Property(type="string")
+     * @OA\Property(type="array", type="array", @OA\Items(type="string"))
      * @var array
      */
     private $tags;

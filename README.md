@@ -80,7 +80,7 @@ make it persistent:
         Post Params => 
             Title = Banana
         
-        search in Title param the work Banana
+        search in Title param the word Banana
         
     * POST   http://slimapp.loc/recipe/search/match_all
         
